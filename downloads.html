@@ -422,8 +422,7 @@
             if (!mobile || mobile === 'ADMIN') {
                 // Not logged in — redirect
                 if (!mobile) {
-                    alert('Please login first to access premium files.');
-                    window.location.href = 'index.html';
+                    window.location.href = 'index.html?msg=login_required';
                     return;
                 }
             }

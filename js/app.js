@@ -926,5 +926,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('auth-page').style.display = 'flex';
         document.getElementById('app-wrapper').style.display = 'none';
         initAuthPage();
+
+        // Show error message if redirected from downloads page
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('msg') === 'login_required') {
+            showError('Please sign in first to access premium files.');
+        }
     }
 });
