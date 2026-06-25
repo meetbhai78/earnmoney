@@ -436,9 +436,18 @@
         </section>
 
         <!-- ===== REFER & EARN TAB ===== -->
-        <section id="refer-tab" class="tab-content" aria-label="Refer & Earn">
-            <h2 class="section-title">Refer & Earn Program</h2>
-            <p class="section-sub">Invite your friends to EarnPoints Pro and earn massive points together!</p>
+        <section id="refer-tab" class="tab-content" aria-label="Refer &amp; Earn">
+            <h2 class="section-title">Refer &amp; Earn Program</h2>
+            <p class="section-sub">Invite friends and unlock tiered rewards — more referrals, bigger bonuses!</p>
+
+            <!-- Tier System Banner -->
+            <div class="glass" style="padding:1.25rem 1.5rem; margin-bottom:2rem; display:flex; align-items:center; gap:14px; border-left:4px solid var(--gold); flex-wrap:wrap;">
+                <i class="fa-solid fa-layer-group" style="color:var(--gold); font-size:1.4rem; flex-shrink:0;"></i>
+                <div style="flex:1; min-width:220px;">
+                    <strong style="font-size:0.95rem;">🥉 Tier 1 (1–5 refs): +50 pts &nbsp;&nbsp; 🥈 Tier 2 (6–10 refs): +75 pts &nbsp;&nbsp; 🥇 Tier 3 (11+ refs): +100 pts</strong>
+                    <div style="margin-top:5px; font-size:0.85rem; color:var(--cyan);" id="ref-tier-msg">Loading...</div>
+                </div>
+            </div>
 
             <div class="stats-grid" style="margin-bottom: 2rem;">
                 <div class="stat-card glass">
@@ -460,7 +469,7 @@
             <div class="glass" style="padding: 2.5rem; margin-bottom: 2rem;">
                 <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; text-align: center;">Your Referral Link</h3>
                 <p style="color: var(--muted); font-size: 0.9rem; text-align: center; margin-bottom: 1.5rem;">
-                    Share this unique link with your friends. When they create an account, you will instantly get <strong style="color: var(--green);">+50 points</strong>!
+                    Share this link with friends. They get <strong style="color:var(--cyan);">+25 Welcome Bonus</strong> &amp; you earn <strong style="color: var(--green);">+50 to +100 pts</strong> per referral!
                 </p>
 
                 <!-- Copy Link Input & Button -->
@@ -471,21 +480,33 @@
                     </button>
                 </div>
 
-                <!-- Social Share Links -->
-                <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                    <a id="share-wa" target="_blank" class="btn-primary" style="background: #25d366; box-shadow: 0 0 15px rgba(37,211,102,0.2); text-decoration: none; display: inline-flex;" aria-label="Share on WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
-                    </a>
-                    <a id="share-tg" target="_blank" class="btn-primary" style="background: #0088cc; box-shadow: 0 0 15px rgba(0,136,204,0.2); text-decoration: none; display: inline-flex;" aria-label="Share on Telegram">
-                        <i class="fa-brands fa-telegram"></i> Telegram
-                    </a>
+                <!-- QR Code + Social Share side by side -->
+                <div style="display:flex; align-items:center; justify-content:center; gap:2rem; flex-wrap:wrap;">
+                    <!-- QR Code -->
+                    <div style="text-align:center;">
+                        <p style="font-size:0.78rem; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">📷 Scan QR Code</p>
+                        <div style="background:var(--bg-card); border:2px solid var(--border); border-radius:16px; padding:10px; display:inline-block;">
+                            <img id="ref-qr-img" src="" alt="Referral QR Code" style="width:150px; height:150px; border-radius:8px; display:block;">
+                        </div>
+                        <p style="font-size:0.72rem; color:var(--muted); margin-top:6px;">For Instagram &amp; WhatsApp Status</p>
+                    </div>
+
+                    <!-- Social Share Links -->
+                    <div style="display:flex; flex-direction:column; gap:12px; align-items:center;">
+                        <a id="share-wa" target="_blank" class="btn-primary" style="background:#25d366; box-shadow:0 0 15px rgba(37,211,102,0.2); text-decoration:none; display:inline-flex; min-width:200px; justify-content:center;" aria-label="Share on WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                        </a>
+                        <a id="share-tg" target="_blank" class="btn-primary" style="background:#0088cc; box-shadow:0 0 15px rgba(0,136,204,0.2); text-decoration:none; display:inline-flex; min-width:200px; justify-content:center;" aria-label="Share on Telegram">
+                            <i class="fa-brands fa-telegram"></i> Share on Telegram
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- List of Referred Users -->
-            <div class="history-wrap glass">
+            <!-- My Referred Users List -->
+            <div class="history-wrap glass" style="margin-bottom:2rem;">
                 <h3 style="font-size: 1.1rem; font-weight: 700; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;">
-                    <i class="fa-solid fa-user-check" style="color: var(--cyan);"></i> Referred Friends List
+                    <i class="fa-solid fa-user-check" style="color: var(--cyan);"></i> My Referred Friends
                 </h3>
                 <table>
                     <thead>
@@ -498,6 +519,26 @@
                     </thead>
                     <tbody id="referral-tbody">
                         <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 2rem;">No referrals yet. Share your link to start earning!</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 🏆 Global Leaderboard -->
+            <div class="history-wrap glass">
+                <h3 style="font-size: 1.1rem; font-weight: 700; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-trophy" style="color: var(--gold);"></i> Top Referrers — Global Leaderboard
+                </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align:center;width:50px;">Rank</th>
+                            <th>Name</th>
+                            <th>Referrals</th>
+                            <th>Tier</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-tbody">
+                        <tr><td colspan="4" style="text-align:center;color:var(--muted);padding:2rem;">Loading leaderboard...</td></tr>
                     </tbody>
                 </table>
             </div>

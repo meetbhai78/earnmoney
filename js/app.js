@@ -50,12 +50,25 @@ async function dbGetActiveUser() {
 }
 
 // ===================== REFERRAL SYSTEM URL PARSER =====================
+const REFERRAL_EXPIRY_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
 function parseReferralCode() {
     const params = new URLSearchParams(window.location.search);
     const ref = params.get('ref');
+
+    // Store fresh referral code from URL
     if (ref && /^\d{7,15}$/.test(ref)) {
         localStorage.setItem('ep_ref_code', ref);
-        console.log('☁️ Stored referral code:', ref);
+        localStorage.setItem('ep_ref_code_ts', Date.now().toString());
+        console.log('☁️ Stored referral code (7-day expiry):', ref);
+    }
+
+    // Clear expired referral codes
+    const storedTs = parseInt(localStorage.getItem('ep_ref_code_ts') || '0');
+    if (storedTs && Date.now() - storedTs > REFERRAL_EXPIRY_MS) {
+        localStorage.removeItem('ep_ref_code');
+        localStorage.removeItem('ep_ref_code_ts');
+        console.log('⏰ Referral code expired and cleared.');
     }
 }
 parseReferralCode();
@@ -176,12 +189,26 @@ async function handleRegister(mobile, password) {
         referrerMobile = referralCode;
     }
 
+    // ── Tiered reward: calculate bonus for referrer ───────────────────────
+    // Count how many people the referrer has already referred
+    const existingReferralCount = referrerMobile
+        ? users.filter(u => u.referred_by === referrerMobile).length
+        : 0;
+    const newReferralRank = existingReferralCount + 1; // this registration is their Nth referral
+    let referralBonus = 50;
+    if (newReferralRank > 10) referralBonus = 100;      // Tier 3: 11th+ referral → 100 pts
+    else if (newReferralRank > 5) referralBonus = 75;   // Tier 2: 6th-10th referral → 75 pts
+    // else Tier 1: 1st-5th referral → 50 pts
+
+    // ── Welcome bonus for newly registered user who came via referral ─────
+    const welcomeBonus = referrerMobile ? 25 : 0;
+
     const newUser = {
         mobile,
         password,
         email,
         name,
-        points: 0,   // NO free welcome points — must earn
+        points: welcomeBonus,   // 25 pts welcome bonus if referred, else 0
         streak: 0,
         last_claimed: 0,
         referred_by: referrerMobile,
@@ -191,28 +218,49 @@ async function handleRegister(mobile, password) {
     // Insert new user into Supabase
     const { error: regError } = await supabaseClient.from('ep_users').insert([newUser]);
     if (regError) {
-        showError('Registration failed. Please try again.');
-        console.error(regError);
+        console.error('Registration error:', regError);
+        if (regError.code === '42501' || regError.message?.includes('row-level security')) {
+            showError('Database access error. Please contact support (RLS not configured).');
+        } else if (regError.code === '23505') {
+            showError('This mobile number is already registered. Please Sign In.');
+        } else {
+            showError(`Registration failed: ${regError.message || 'Unknown error. Please try again.'}`);
+        }
         return;
     }
 
-    // Credit referrer
+    // Log welcome bonus for the new user
+    if (welcomeBonus > 0) {
+        await supabaseClient.from('ep_logs').insert([{
+            mobile,
+            type: 'credit',
+            title: '🎁 Welcome Bonus (Joined via referral)',
+            points: welcomeBonus,
+            date: new Date().toLocaleDateString('en-IN')
+        }]);
+    }
+
+    // Credit referrer with tiered bonus
     if (referrerMobile) {
-        const referrerIdx = users.findIndex(u => u.mobile === referrerMobile);
-        if (referrerIdx !== -1) {
-            const newPoints = (users[referrerIdx].points || 0) + 50;
+        const referrerUser = users.find(u => u.mobile === referrerMobile);
+        if (referrerUser) {
+            const newPoints = (referrerUser.points || 0) + referralBonus;
             await supabaseClient.from('ep_users').update({ points: newPoints }).eq('mobile', referrerMobile);
+
+            // Tier label for history log
+            const tierLabel = newReferralRank > 10 ? ' 🥇 Tier 3' : newReferralRank > 5 ? ' 🥈 Tier 2' : ' 🥉 Tier 1';
 
             // Log it for referrer
             await supabaseClient.from('ep_logs').insert([{
                 mobile: referrerMobile,
                 type: 'credit',
-                title: `Referral Bonus (Joined: ${name})`,
-                points: 50,
+                title: `Referral Bonus${tierLabel} (Joined: ${name}) +${referralBonus} pts`,
+                points: referralBonus,
                 date: new Date().toLocaleDateString('en-IN')
             }]);
         }
         localStorage.removeItem('ep_ref_code');
+        localStorage.removeItem('ep_ref_code_ts');
     }
 
     saveCurrent(mobile);
@@ -747,19 +795,25 @@ async function initReferTab() {
     const linkInput = document.getElementById('referral-link-input');
     if (linkInput) linkInput.value = refLink;
 
-    // Sharing Links
-    const shareText = `Join EarnPoints Pro, complete simple tasks, and earn free rewards! Signup using my referral link: ${refLink}`;
+    // ── QR Code (via free qrserver.com API) ───────────────────────────────
+    const qrImg = document.getElementById('ref-qr-img');
+    if (qrImg) {
+        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(refLink)}&bgcolor=0f0726&color=a78bfa&margin=12&qzone=1&format=png`;
+        qrImg.alt = 'Scan QR Code to join with referral';
+    }
+
+    // ── Sharing Links ─────────────────────────────────────────────────────
+    const shareText = `🎁 Join EarnPoints Pro — earn free points by completing tasks! Use my referral link & get a 25 pts Welcome Bonus: ${refLink}`;
     const waBtn = document.getElementById('share-wa');
     const tgBtn = document.getElementById('share-tg');
     if (waBtn) waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-    if (tgBtn) tgBtn.href = `https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${encodeURIComponent('Join EarnPoints Pro and earn rewards!')}`;
+    if (tgBtn) tgBtn.href = `https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${encodeURIComponent('🎁 Join EarnPoints Pro and get a 25 pts Welcome Bonus!')} `;
 
-    // Copy Button Handler
+    // ── Copy Button Handler ───────────────────────────────────────────────
     const copyBtn = document.getElementById('btn-copy-link');
     if (copyBtn && linkInput) {
         const newCopyBtn = copyBtn.cloneNode(true);
         copyBtn.parentNode.replaceChild(newCopyBtn, copyBtn);
-        
         newCopyBtn.addEventListener('click', () => {
             linkInput.select();
             linkInput.setSelectionRange(0, 99999);
@@ -777,28 +831,41 @@ async function initReferTab() {
                         newCopyBtn.style.boxShadow = '';
                     }, 2000);
                 })
-                .catch(() => {
-                    alert('Failed to copy link. Please select the text and copy manually.');
-                });
+                .catch(() => alert('Failed to copy link. Please select and copy manually.'));
         });
     }
 
-    // Load Stats
+    // ── Load Stats & Tier info ────────────────────────────────────────────
     const allUsers = await dbGetUsers();
     const referredUsers = allUsers.filter(u => u.referred_by === user.mobile);
     const refCount = referredUsers.length;
-    const refEarned = refCount * 50;
+
+    // Calculate actual points earned via tiered system
+    let refEarned = 0;
+    for (let i = 1; i <= refCount; i++) {
+        if (i > 10) refEarned += 100;
+        else if (i > 5) refEarned += 75;
+        else refEarned += 50;
+    }
+
+    // Next tier info
+    let nextTierMsg = '';
+    if (refCount < 5) nextTierMsg = `${5 - refCount} more to reach Tier 2 (75 pts/referral)`;
+    else if (refCount < 10) nextTierMsg = `${10 - refCount} more to reach Tier 3 (100 pts/referral)`;
+    else nextTierMsg = '🏆 Max Tier reached! Earning 100 pts per referral';
 
     const countElem = document.getElementById('ref-count');
-    const ptsElem = document.getElementById('ref-points');
+    const ptsElem   = document.getElementById('ref-points');
+    const tierElem  = document.getElementById('ref-tier-msg');
     if (countElem) countElem.textContent = refCount;
-    if (ptsElem) ptsElem.textContent = refEarned;
+    if (ptsElem)   ptsElem.textContent   = refEarned;
+    if (tierElem)  tierElem.textContent  = nextTierMsg;
 
-    // Load Referred Users Table
+    // ── Referred Users Table ──────────────────────────────────────────────
     const tbody = document.getElementById('referral-tbody');
     if (tbody) {
         if (referredUsers.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 2rem;">No referrals yet. Share your link to start earning!</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:2rem;">No referrals yet. Share your link to start earning!</td></tr>';
         } else {
             tbody.innerHTML = referredUsers.map(u => {
                 const maskedMobile = u.mobile.slice(0, 3) + '***' + u.mobile.slice(Math.max(3, u.mobile.length - 3));
@@ -808,6 +875,41 @@ async function initReferTab() {
                     <td>${u.name || 'Earner'}</td>
                     <td>${joinDate}</td>
                     <td><span class="badge success">Registered</span></td>
+                </tr>`;
+            }).join('');
+        }
+    }
+
+    // ── Global Leaderboard (Top 10 referrers) ────────────────────────────
+    const leaderboard = allUsers
+        .map(u => ({
+            name:     u.name || 'Earner',
+            mobile:   u.mobile,
+            refCount: allUsers.filter(r => r.referred_by === u.mobile).length
+        }))
+        .filter(u => u.refCount > 0)
+        .sort((a, b) => b.refCount - a.refCount)
+        .slice(0, 10);
+
+    const lbTbody = document.getElementById('leaderboard-tbody');
+    if (lbTbody) {
+        if (leaderboard.length === 0) {
+            lbTbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:2rem;">No referrals recorded yet. Be the first!</td></tr>';
+        } else {
+            const medals = ['🥇','🥈','🥉'];
+            lbTbody.innerHTML = leaderboard.map((u, i) => {
+                const rankBadge = i < 3 ? medals[i] : `#${i + 1}`;
+                const isMe = u.mobile === user.mobile;
+                const rowStyle = isMe ? 'background:rgba(167,139,250,0.08); font-weight:700;' : '';
+                const maskedName = u.name.length > 12 ? u.name.slice(0, 12) + '…' : u.name;
+                const tier = u.refCount > 10 ? '<span class="badge success">Tier 3</span>' :
+                             u.refCount > 5  ? '<span class="badge pending">Tier 2</span>' :
+                                              '<span style="color:var(--muted);font-size:0.8rem;">Tier 1</span>';
+                return `<tr style="${rowStyle}">
+                    <td style="font-size:1.2rem;text-align:center;">${rankBadge}</td>
+                    <td>${maskedName}${isMe ? ' <span style="color:var(--purple);font-size:0.75rem;">(You)</span>' : ''}</td>
+                    <td style="color:var(--cyan);font-weight:700;"><i class="fa-solid fa-users"></i> ${u.refCount}</td>
+                    <td>${tier}</td>
                 </tr>`;
             }).join('');
         }
