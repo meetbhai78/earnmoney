@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== PRIMARY SEO TAGS ===== -->
+    <title>EarnPoints Pro – Earn Points & Redeem for Cash, Google Play & PayPal | Free Rewards Site</title>
+    <meta name="description" content="EarnPoints Pro is a free online rewards platform where you can earn points by completing simple tasks, surveys, and app installs. Redeem points for Google Play Gift Cards, PayPal Cash, and more. Start earning today!">
+    <meta name="keywords" content="earn points, free rewards, google play gift card, paypal cash, free paytm, earn money online, cpa offers, survey rewards, earn gift cards, free gift codes, online earning, rewards site india">
+    <meta name="author" content="EarnPoints Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8b5cf6">
+    <link rel="canonical" href="https://earnpoints.pro/">
+
+    <!-- ===== OPEN GRAPH (Social Media) ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://earnpoints.pro/">
+    <meta property="og:title" content="EarnPoints Pro – Earn Free Rewards Online">
+    <meta property="og:description" content="Complete simple tasks, install apps, and earn points redeemable for real cash via PayPal, Google Play Gift Cards, and more. 100% Free. Join thousands of earners!">
+    <meta property="og:image" content="https://earnpoints.pro/assets/og-image.jpg">
+    <meta property="og:site_name" content="EarnPoints Pro">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EarnPoints Pro – Earn Free Rewards Online">
+    <meta name="twitter:description" content="Earn Points by completing tasks and surveys. Redeem for PayPal Cash, Google Play Cards, and more!">
+    <meta name="twitter:image" content="https://earnpoints.pro/assets/og-image.jpg">
+
+    <!-- ===== STRUCTURED DATA (Google Rich Results) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "EarnPoints Pro",
+        "url": "https://earnpoints.pro",
+        "description": "Free online rewards platform – earn points by completing tasks and redeem for PayPal, Google Play, and more.",
+        "potentialAction": {
+            "@type": "RegisterAction",
+            "target": "https://earnpoints.pro/#register"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "EarnPoints Pro",
+        "url": "https://earnpoints.pro",
+        "logo": "https://earnpoints.pro/assets/logo.png",
+        "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I earn points on EarnPoints Pro?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You earn points by completing simple tasks like installing apps, filling surveys, or signing up for services through our CPAlead offers wall."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much is 10000 points worth?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "10,000 points can be redeemed for $10 via PayPal, or equivalent Google Play / Amazon Gift Card."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is EarnPoints Pro free to join?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! EarnPoints Pro is completely free to join. Register with your mobile number and start earning points immediately."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- ===== ASSETS ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ========== AUTH PAGE ========== -->
+<div id="auth-page" class="auth-page">
+    <div class="auth-card glass">
+        <div class="auth-logo">
+            <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h1>Earn<span>Points.Pro</span></h1>
+            <p id="auth-subtitle">Sign in to start earning rewards!</p>
+        </div>
+
+        <div id="auth-error-box" style="display:none; background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); border-radius:10px; padding:10px 14px; margin-bottom:14px; color:#f87171; font-size:0.88rem; font-weight:500;"></div>
+
+        <form id="auth-form" autocomplete="off">
+            <div class="form-group">
+                <label for="auth-mobile">Mobile Number</label>
+                <div class="input-wrap">
+                    <span class="input-prefix">+91</span>
+                    <input type="tel" id="auth-mobile" class="form-control input-with-prefix"
+                        placeholder="10-digit mobile number" maxlength="10" inputmode="numeric">
+                </div>
+            </div>
+
+            <div class="form-group" id="email-field" style="display:none;">
+                <label for="auth-email">Email Address <span style="color:var(--red);">*</span></label>
+                <input type="email" id="auth-email" class="form-control" placeholder="yourname@gmail.com">
+            </div>
+
+            <div class="form-group" id="name-field" style="display:none;">
+                <label for="auth-name">Your Name</label>
+                <input type="text" id="auth-name" class="form-control" placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group" id="referral-field" style="display:none;">
+                <label for="auth-referral">Referral Code (Optional)</label>
+                <input type="text" id="auth-referral" class="form-control" placeholder="10-digit mobile number" maxlength="10" inputmode="numeric">
+            </div>
+
+            <div class="form-group">
+                <label for="auth-password">Password</label>
+                <div class="input-wrap">
+                    <input type="password" id="auth-password" class="form-control" placeholder="Minimum 6 characters" style="padding-right:46px;">
+                    <button type="button" class="toggle-pw" id="toggle-pw-btn" title="Show/Hide Password">
+                        <i class="fa-solid fa-eye" id="pw-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="auth-submit-btn" style="width:100%; justify-content:center; margin-top:0.8rem; font-size:1rem; padding:0.9rem;">
+                <i class="fa-solid fa-right-to-bracket"></i> <span id="auth-btn-text">Sign In</span>
+            </button>
+        </form>
+
+        <div class="auth-switch" style="margin-top:1.2rem;">
+            <span id="auth-switch-msg">Don't have an account?</span>
+            <a id="auth-toggle"> Create Account</a>
+        </div>
+
+        <!-- SEO-friendly description below auth card -->
+        <div style="text-align:center; margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.8rem; color:var(--muted); line-height:1.6;">
+            🌍 <strong style="color:var(--text);">Trusted by 10,000+ earners</strong> globally.<br>
+            Earn points → Redeem for PayPal Cash, Google Play Codes & more!
+        </div>
+    </div>
+</div>
+
+<!-- ========== APP WRAPPER (logged in) ========== -->
+<div id="app-wrapper" style="display:none;">
+
+    <!-- HEADER -->
+    <header>
+        <a class="logo" href="#">
+            <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+            <span class="logo-text">EarnPoints.Pro</span>
+        </a>
+
+        <nav class="header-nav" id="header-nav" aria-label="Main navigation">
+            <button class="nav-btn active" data-tab="dashboard-tab"><i class="fa-solid fa-house"></i> Dashboard</button>
+            <button class="nav-btn" data-tab="earn-tab"><i class="fa-solid fa-coins"></i> Earn Points</button>
+            <button class="nav-btn" onclick="location.href='downloads.html'"><i class="fa-solid fa-cloud-arrow-down"></i> Free Files</button>
+            <button class="nav-btn" data-tab="refer-tab"><i class="fa-solid fa-user-plus"></i> Refer & Earn</button>
+            <button class="nav-btn" data-tab="store-tab"><i class="fa-solid fa-gift"></i> Redeem</button>
+            <button class="nav-btn" data-tab="history-tab"><i class="fa-solid fa-clock-rotate-left"></i> History</button>
+            <button class="nav-btn admin-btn" id="admin-nav-btn" data-tab="admin-tab" style="display:none;"><i class="fa-solid fa-shield-halved"></i> Admin</button>
+        </nav>
+
+        <div class="header-right">
+            <div class="points-chip"><i class="fa-solid fa-coins"></i> <span id="pts-display">0</span> pts</div>
+            <div class="user-chip"><i class="fa-solid fa-mobile-screen-button"></i> <span id="user-display">---</span></div>
+            <button class="btn-logout" id="btn-logout" title="Sign Out" aria-label="Sign out"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ===== DASHBOARD TAB ===== -->
+        <section id="dashboard-tab" class="tab-content active" aria-label="Dashboard">
+
+            <div class="hero-card glass">
+                <div class="hero-body">
+                    <div class="hero-text">
+                        <h1>Welcome, <span id="hero-name">Earner</span>! 👋</h1>
+                        <p>Complete simple tasks and earn Points. Redeem for <strong>PayPal Cash ($)</strong>, Google Play Gift Cards, and more!</p>
+                    </div>
+                    <div class="claim-box">
+                        <button class="btn-primary" id="btn-daily-claim" aria-label="Claim daily bonus">
+                            <i class="fa-solid fa-gift"></i> Claim Daily Bonus
+                        </button>
+                        <div class="claim-timer" id="claim-timer" aria-live="polite">Checking...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Stats -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon gold"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="stat-info">
+                        <h3>My Points</h3>
+                        <p><span id="dash-pts">0</span></p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon cyan"><i class="fa-solid fa-fire"></i></div>
+                    <div class="stat-info">
+                        <h3>Daily Streak</h3>
+                        <p><span id="dash-streak">0</span> days</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon green"><i class="fa-solid fa-check-double"></i></div>
+                    <div class="stat-info">
+                        <h3>Tasks Done</h3>
+                        <p><span id="dash-tasks">0</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Earn steps -->
+            <div class="how-card glass">
+                <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:4px;">
+                    <i class="fa-solid fa-circle-info" style="color:var(--cyan);"></i> How to Earn Money Online?
+                </h2>
+                <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">3 simple steps to get real PayPal cash or Google Play codes — completely free!</p>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-num p">1</div>
+                        <h4>Click "Earn Points"</h4>
+                        <p>Browse available offers — app installs, surveys, sign-ups. Pick any offer that suits you.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num c">2</div>
+                        <h4>Complete the Task</h4>
+                        <p>Follow the instructions carefully. Points are credited automatically once the task is verified by CPAlead.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num g">3</div>
+                        <h4>Redeem for Real Cash!</h4>
+                        <p>10,000 Points = $10 via PayPal or Google Play Gift Card. Request instantly from our Redeem Store.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Us / Trust Signals -->
+            <div class="glass" style="padding:2rem; margin-top:2rem;">
+                <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:1.5rem; text-align:center;">Why Choose EarnPoints Pro?</h2>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1.5rem; text-align:center;">
+                    <div>
+                        <div style="font-size:2rem; margin-bottom:8px;">⚡</div>
+                        <h4 style="font-weight:700; margin-bottom:6px;">Instant Verification</h4>
+                        <p style="color:var(--muted); font-size:0.85rem;">Tasks verified in real-time by CPAlead network</p>
+                    </div>
+                    <div>
+                        <div style="font-size:2rem; margin-bottom:8px;">🌍</div>
+                        <h4 style="font-weight:700; margin-bottom:6px;">Global Payouts</h4>
+                        <p style="color:var(--muted); font-size:0.85rem;">Receive payments via PayPal, worldwide</p>
+                    </div>
+                    <div>
+                        <div style="font-size:2rem; margin-bottom:8px;">🔒</div>
+                        <h4 style="font-weight:700; margin-bottom:6px;">100% Secure</h4>
+                        <p style="color:var(--muted); font-size:0.85rem;">Your data is safe and never shared with third parties</p>
+                    </div>
+                    <div>
+                        <div style="font-size:2rem; margin-bottom:8px;">🎯</div>
+                        <h4 style="font-weight:700; margin-bottom:6px;">Daily Bonuses</h4>
+                        <p style="color:var(--muted); font-size:0.85rem;">Log in every day to claim increasing bonus points</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ===== EARN POINTS TAB ===== -->
+        <section id="earn-tab" class="tab-content" aria-label="Earn Points Offerwall">
+            <div class="ow-card glass">
+                <div class="ow-header">
+                    <div>
+                        <h2>CPAlead Offers Wall</h2>
+                        <p>Complete any task below to earn points. Do <strong>NOT</strong> use VPN, fake completions, or proxy — account will be permanently banned.</p>
+                    </div>
+                    <div class="live-dot">LIVE</div>
+                </div>
+                <div class="ow-frame">
+                    <iframe
+                        sandbox="allow-popups allow-same-origin allow-scripts allow-forms allow-top-navigation-by-user-activation allow-popups-to-escape-sandbox"
+                        referrerpolicy="no-referrer"
+                        src="https://www.akamaicdn.org/wall/I6WZhaJA"
+                        title="CPAlead Offer Wall – Earn Points"
+                        id="offerwall-iframe">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REDEEM STORE TAB ===== -->
+        <section id="store-tab" class="tab-content" aria-label="Redeem Store">
+            <h2 class="section-title">Redeem Store</h2>
+            <p class="section-sub">10,000 Points = $10 USD or equivalent. Delivered within 24–48 hours after admin approval.</p>
+
+            <!-- Rate info banner -->
+            <div class="glass" style="padding:1rem 1.5rem; margin-bottom:2rem; display:flex; align-items:center; gap:12px; border-left:3px solid var(--gold);">
+                <i class="fa-solid fa-circle-info" style="color:var(--gold); font-size:1.2rem; flex-shrink:0;"></i>
+                <span style="font-size:0.9rem; color:var(--muted);">
+                    <strong style="color:var(--text);">Conversion Rate:</strong> 10,000 Points = $10 USD = ₹830 approx.
+                    Earn points from tasks, daily check-ins, and referrals!
+                </span>
+            </div>
+
+            <!-- USD PAYMENTS SECTION -->
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">
+                <i class="fa-solid fa-dollar-sign" style="color:var(--green);"></i> USD / Dollar Payouts
+            </h3>
+            <div class="store-grid" style="margin-bottom:2.5rem;">
+
+                <!-- PayPal $10 -->
+                <div class="reward-card glass">
+                    <div class="reward-brand">
+                        <div class="brand-logo" style="background:linear-gradient(135deg,#003087,#009cde); color:#fff;">
+                            <i class="fa-brands fa-paypal"></i>
+                        </div>
+                        <div class="brand-name">
+                            <h4>PayPal Cash $10</h4>
+                            <p>Sent to your PayPal email</p>
+                        </div>
+                    </div>
+                    <div class="reward-footer">
+                        <div class="pts-cost"><i class="fa-solid fa-coins"></i> 10,000 pts</div>
+                        <button class="btn-primary btn-redeem" data-reward="PayPal Cash $10" data-cost="10000" data-type="paypal">Redeem</button>
+                    </div>
+                </div>
+
+                <!-- PayPal $25 -->
+                <div class="reward-card glass">
+                    <div class="reward-brand">
+                        <div class="brand-logo" style="background:linear-gradient(135deg,#003087,#009cde); color:#fff;">
+                            <i class="fa-brands fa-paypal"></i>
+                        </div>
+                        <div class="brand-name">
+                            <h4>PayPal Cash $25</h4>
+                            <p>Sent to your PayPal email</p>
+                        </div>
+                    </div>
+                    <div class="reward-footer">
+                        <div class="pts-cost"><i class="fa-solid fa-coins"></i> 25,000 pts</div>
+                        <button class="btn-primary btn-redeem" data-reward="PayPal Cash $25" data-cost="25000" data-type="paypal">Redeem</button>
+                    </div>
+                </div>
+
+                <!-- PayPal $50 -->
+                <div class="reward-card glass">
+                    <div class="reward-brand">
+                        <div class="brand-logo" style="background:linear-gradient(135deg,#003087,#009cde); color:#fff;">
+                            <i class="fa-brands fa-paypal"></i>
+                        </div>
+                        <div class="brand-name">
+                            <h4>PayPal Cash $50</h4>
+                            <p>Sent to your PayPal email</p>
+                        </div>
+                    </div>
+                    <div class="reward-footer">
+                        <div class="pts-cost"><i class="fa-solid fa-coins"></i> 50,000 pts</div>
+                        <button class="btn-primary btn-redeem" data-reward="PayPal Cash $50" data-cost="50000" data-type="paypal">Redeem</button>
+                    </div>
+                </div>
+
+                <!-- Wise $10 -->
+                <div class="reward-card glass">
+                    <div class="reward-brand">
+                        <div class="brand-logo" style="background:linear-gradient(135deg,#163300,#48c85b); color:#fff;">
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+                        </div>
+                        <div class="brand-name">
+                            <h4>Wise Transfer $10</h4>
+                            <p>International bank transfer</p>
+                        </div>
+                    </div>
+                    <div class="reward-footer">
+                        <div class="pts-cost"><i class="fa-solid fa-coins"></i> 10,000 pts</div>
+                        <button class="btn-primary btn-redeem" data-reward="Wise Transfer $10" data-cost="10000" data-type="wise">Redeem</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INDIA / GIFT CARDS SECTION -->
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">
+                <i class="fa-brands fa-google-play" style="color:var(--cyan);"></i> Google Play Gift Codes
+            </h3>
+            <div class="store-grid">
+                <div class="reward-card glass">
+                    <div class="reward-brand">
+                        <div class="brand-logo gplay"><i class="fa-brands fa-google-play"></i></div>
+                        <div class="brand-name"><h4>Google Play ₹10</h4><p>Gift Code via Email</p></div>
+                    </div>
+                    <div class="reward-footer">
+                        <div class="pts-cost"><i class="fa-solid fa-coins"></i> 1,000 pts</div>
+                        <button class="btn-primary btn-redeem" data-reward="Google Play Gift Code ₹10" data-cost="1000" data-type="email">Redeem</button>
+                    </div>
+                </div>
+                <div class="reward-card glass">
+                    <div class="reward-brand">
+                        <div class="brand-logo gplay"><i class="fa-brands fa-google-play"></i></div>
+                        <div class="brand-name"><h4>Google Play ₹50</h4><p>Gift Code via Email</p></div>
+                    </div>
+                    <div class="reward-footer">
+                        <div class="pts-cost"><i class="fa-solid fa-coins"></i> 5,000 pts</div>
+                        <button class="btn-primary btn-redeem" data-reward="Google Play Gift Code ₹50" data-cost="5000" data-type="email">Redeem</button>
+                    </div>
+                </div>
+                <div class="reward-card glass">
+                    <div class="reward-brand">
+                        <div class="brand-logo gplay"><i class="fa-brands fa-google-play"></i></div>
+                        <div class="brand-name"><h4>Google Play ₹100</h4><p>Gift Code via Email</p></div>
+                    </div>
+                    <div class="reward-footer">
+                        <div class="pts-cost"><i class="fa-solid fa-coins"></i> 10,000 pts</div>
+                        <button class="btn-primary btn-redeem" data-reward="Google Play Gift Code ₹100" data-cost="10000" data-type="email">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ===== REFER & EARN TAB ===== -->
+        <section id="refer-tab" class="tab-content" aria-label="Refer & Earn">
+            <h2 class="section-title">Refer & Earn Program</h2>
+            <p class="section-sub">Invite your friends to EarnPoints Pro and earn massive points together!</p>
+
+            <div class="stats-grid" style="margin-bottom: 2rem;">
+                <div class="stat-card glass">
+                    <div class="stat-icon cyan"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-info">
+                        <h3>Referred Friends</h3>
+                        <p><span id="ref-count">0</span></p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon gold"><i class="fa-solid fa-coins"></i></div>
+                    <div class="stat-info">
+                        <h3>Points Earned</h3>
+                        <p><span id="ref-points">0</span> pts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass" style="padding: 2.5rem; margin-bottom: 2rem;">
+                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; text-align: center;">Your Referral Link</h3>
+                <p style="color: var(--muted); font-size: 0.9rem; text-align: center; margin-bottom: 1.5rem;">
+                    Share this unique link with your friends. When they create an account, you will instantly get <strong style="color: var(--green);">+50 points</strong>!
+                </p>
+
+                <!-- Copy Link Input & Button -->
+                <div style="display: flex; gap: 10px; max-width: 600px; margin: 0 auto 1.5rem auto;">
+                    <input type="text" id="referral-link-input" class="form-control" readonly style="font-size: 0.9rem; font-family: monospace; letter-spacing: 0.5px;" value="">
+                    <button class="btn-primary" id="btn-copy-link" style="flex-shrink: 0; min-width: 120px; justify-content: center;" aria-label="Copy referral link">
+                        <i class="fa-solid fa-copy"></i> Copy Link
+                    </button>
+                </div>
+
+                <!-- Social Share Links -->
+                <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <a id="share-wa" target="_blank" class="btn-primary" style="background: #25d366; box-shadow: 0 0 15px rgba(37,211,102,0.2); text-decoration: none; display: inline-flex;" aria-label="Share on WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                    </a>
+                    <a id="share-tg" target="_blank" class="btn-primary" style="background: #0088cc; box-shadow: 0 0 15px rgba(0,136,204,0.2); text-decoration: none; display: inline-flex;" aria-label="Share on Telegram">
+                        <i class="fa-brands fa-telegram"></i> Telegram
+                    </a>
+                </div>
+            </div>
+
+            <!-- List of Referred Users -->
+            <div class="history-wrap glass">
+                <h3 style="font-size: 1.1rem; font-weight: 700; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-user-check" style="color: var(--cyan);"></i> Referred Friends List
+                </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mobile Number</th>
+                            <th>Name</th>
+                            <th>Date Joined</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="referral-tbody">
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 2rem;">No referrals yet. Share your link to start earning!</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== HISTORY TAB ===== -->
+        <section id="history-tab" class="tab-content" aria-label="Transaction History">
+            <h2 class="section-title">Transaction History</h2>
+            <p class="section-sub">Track all your earned points and redemption requests here.</p>
+            <div class="history-wrap glass">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Points</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-tbody">
+                        <tr><td colspan="4" style="text-align:center; color:var(--muted); padding:2rem;">No transactions yet. Start earning!</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== ADMIN TAB ===== -->
+        <section id="admin-tab" class="tab-content" aria-label="Admin Panel">
+            <div class="admin-panel glass">
+                <div class="admin-top">
+                    <div>
+                        <h2>Admin Control Center</h2>
+                        <p>Manage users, adjust balances, and process PayPal / Google Play redemption requests.</p>
+                    </div>
+                    <div class="admin-tabs">
+                        <button class="admin-tab active" data-sec="sec-users">
+                            <i class="fa-solid fa-users"></i> Users <span id="admin-user-count">(0)</span>
+                        </button>
+                        <button class="admin-tab" data-sec="sec-requests">
+                            <i class="fa-solid fa-receipt"></i> Requests <span id="admin-req-count">(0)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="sec-users" class="admin-section active">
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mobile</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Points</th>
+                                    <th>Referrals</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-users-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="sec-requests" class="admin-section">
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Mobile</th>
+                                    <th>Payment Info</th>
+                                    <th>Item</th>
+                                    <th>Pts</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-req-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FAQ Section for SEO -->
+    <div class="glass" style="max-width:1200px; margin:2rem auto; padding:2rem 2.5rem;">
+        <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:1.5rem;">Frequently Asked Questions</h2>
+        <div style="display:grid; gap:1rem;">
+            <details style="border-bottom:1px solid var(--border); padding-bottom:1rem;">
+                <summary style="cursor:pointer; font-weight:700; font-size:1rem; list-style:none; display:flex; justify-content:space-between;">
+                    How do I earn points? <i class="fa-solid fa-chevron-down" style="color:var(--muted);"></i>
+                </summary>
+                <p style="color:var(--muted); margin-top:0.75rem; font-size:0.9rem; line-height:1.6;">
+                    Visit the "Earn Points" tab and complete tasks from our CPAlead Offers Wall — install apps, fill surveys, or sign up for services. Each completed task credits points to your account instantly.
+                </p>
+            </details>
+            <details style="border-bottom:1px solid var(--border); padding-bottom:1rem;">
+                <summary style="cursor:pointer; font-weight:700; font-size:1rem; list-style:none; display:flex; justify-content:space-between;">
+                    How much is 10,000 points worth? <i class="fa-solid fa-chevron-down" style="color:var(--muted);"></i>
+                </summary>
+                <p style="color:var(--muted); margin-top:0.75rem; font-size:0.9rem; line-height:1.6;">
+                    10,000 points = $10 USD. You can redeem via PayPal cash transfer, Wise bank transfer, or get equivalent Google Play Gift Codes (₹830 approx).
+                </p>
+            </details>
+            <details style="border-bottom:1px solid var(--border); padding-bottom:1rem;">
+                <summary style="cursor:pointer; font-weight:700; font-size:1rem; list-style:none; display:flex; justify-content:space-between;">
+                    How long does it take to receive payment? <i class="fa-solid fa-chevron-down" style="color:var(--muted);"></i>
+                </summary>
+                <p style="color:var(--muted); margin-top:0.75rem; font-size:0.9rem; line-height:1.6;">
+                    Redemption requests are processed within 24–48 hours after admin approval. PayPal transfers typically arrive instantly once sent.
+                </p>
+            </details>
+            <details style="padding-bottom:0.5rem;">
+                <summary style="cursor:pointer; font-weight:700; font-size:1rem; list-style:none; display:flex; justify-content:space-between;">
+                    Is this website free and safe? <i class="fa-solid fa-chevron-down" style="color:var(--muted);"></i>
+                </summary>
+                <p style="color:var(--muted); margin-top:0.75rem; font-size:0.9rem; line-height:1.6;">
+                    Yes! EarnPoints Pro is completely free to join. We partner with CPAlead, a trusted CPA network. Your mobile number and email are stored securely and never shared with third parties.
+                </p>
+            </details>
+        </div>
+    </div>
+
+    <footer>
+        <p style="margin-bottom:6px;">&copy; 2026 <strong>EarnPoints.Pro</strong> — All Rights Reserved</p>
+        <p style="margin-bottom:8px; font-size:0.8rem;">Powered by <a href="https://www.cpalead.com" target="_blank" rel="nofollow">CPAlead Publisher Network</a></p>
+        <p style="font-size:0.78rem;">Earn points by completing tasks &amp; surveys. Redeem for PayPal Cash, Google Play Gift Cards &amp; more. Free to join!</p>
+    </footer>
+</div>
+
+<!-- REDEEM MODAL -->
+<div class="modal-overlay" id="redeem-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box glass">
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+        <div style="text-align:center; margin-bottom:1.5rem;">
+            <div style="font-size:2.5rem; margin-bottom:8px;" id="modal-icon">🎁</div>
+            <h3 id="modal-title" style="font-size:1.3rem; font-weight:800;">Redeem Reward</h3>
+            <p id="modal-cost" style="color:var(--muted); font-size:0.9rem; margin-top:4px;">Cost: 1,000 Points</p>
+        </div>
+        <form id="redeem-form">
+            <div class="form-group" id="redeem-paypal-group" style="display:none;">
+                <label for="redeem-paypal">PayPal Email Address:</label>
+                <input type="email" id="redeem-paypal" class="form-control" placeholder="your@paypal.com">
+            </div>
+            <div class="form-group" id="redeem-wise-group" style="display:none;">
+                <label for="redeem-wise">Wise Email / Account:</label>
+                <input type="email" id="redeem-wise" class="form-control" placeholder="your@wise.com">
+            </div>
+            <div class="form-group" id="redeem-email-group" style="display:none;">
+                <label for="redeem-email">Email for Gift Code Delivery:</label>
+                <input type="email" id="redeem-email" class="form-control" placeholder="yourname@gmail.com">
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%; justify-content:center; margin-top:0.5rem;">
+                <i class="fa-solid fa-check"></i> Confirm Request
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="js/cloudinary.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

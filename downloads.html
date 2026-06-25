@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== SEO META TAGS ===== -->
+    <title>Free Premium Downloads – Unlock Files with Tasks | EarnPoints Pro</title>
+    <meta name="description" content="Download premium files for free on EarnPoints Pro! Unlock exclusive content including AI scripts, blogger themes, money-making eBooks, and game booster configs by completing a quick task. No payment required!">
+    <meta name="keywords" content="free premium downloads, unlock files online, free ebook download, free blogger theme, AI script download, CPAlead content locker, earn points download, free game config">
+    <meta name="author" content="EarnPoints Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8b5cf6">
+    <link rel="canonical" href="https://earnpoints.pro/downloads.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://earnpoints.pro/downloads.html">
+    <meta property="og:title" content="Free Premium Downloads – EarnPoints Pro">
+    <meta property="og:description" content="Unlock exclusive premium files for free! Just complete one quick task to instantly download AI scripts, SEO themes, eBooks, and more.">
+    <meta property="og:site_name" content="EarnPoints Pro">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Free Premium Downloads",
+        "description": "Unlock and download exclusive premium digital files for free by completing simple CPA tasks on EarnPoints Pro.",
+        "url": "https://earnpoints.pro/downloads.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "EarnPoints Pro",
+            "url": "https://earnpoints.pro"
+        }
+    }
+    </script>
+
+    <!-- Assets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CPAlead -->
+    <script>window.CPAlead_PublisherUserId = 3352367;</script>
+
+    <style>
+        .dl-hero { padding: 3rem 2rem; text-align: center; margin-bottom: 2.5rem; position: relative; overflow: hidden; }
+        .dl-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(6,182,212,0.05)); }
+        .dl-hero h1 { font-size: 2.4rem; font-weight: 900; margin-bottom: 0.75rem; position: relative; }
+        .dl-hero h1 span { background: linear-gradient(135deg,#8b5cf6,#06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .dl-hero p { color: var(--muted); max-width: 680px; margin: 0 auto 1.5rem; font-size: 1rem; line-height: 1.7; position: relative; }
+        .dl-hero .badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; position: relative; }
+        .dl-badge { padding: 6px 14px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .dl-badge.free { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #10b981; }
+        .dl-badge.fast { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #f59e0b; }
+        .dl-badge.secure { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); color: #8b5cf6; }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .download-card {
+            padding: 1.8rem;
+            position: relative; overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .download-card:hover { transform: translateY(-6px); box-shadow: 0 0 30px rgba(139,92,246,0.25); }
+        .download-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(135deg,#8b5cf6,#06b6d4);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .download-card:hover::before { opacity: 1; }
+
+        .file-icon-wrap {
+            width: 60px; height: 60px; border-radius: 16px; margin-bottom: 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem;
+        }
+        .file-icon-wrap.code  { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+        .file-icon-wrap.theme { background: rgba(6,182,212,0.15); color: #06b6d4; }
+        .file-icon-wrap.pdf   { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .file-icon-wrap.zip   { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .file-icon-wrap.video { background: rgba(236,72,153,0.15); color: #ec4899; }
+
+        .file-meta { display: flex; gap: 8px; margin: 0.7rem 0 1.2rem; flex-wrap: wrap; }
+        .file-tag { font-size: 0.75rem; font-weight: 700; padding: 3px 9px; border-radius: 6px; }
+        .file-tag.type { background: rgba(255,255,255,0.06); color: var(--muted); }
+        .file-tag.size { background: rgba(16,185,129,0.1); color: #10b981; }
+        .file-tag.new  { background: rgba(236,72,153,0.12); color: #ec4899; }
+
+        .download-card h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+        .download-card p  { color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 0; }
+
+        .download-btn {
+            width: 100%; margin-top: 1.3rem;
+            background: linear-gradient(135deg,#8b5cf6,#06b6d4);
+            border: none; color: #fff;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700; font-size: 0.95rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 0 20px rgba(139,92,246,0.3);
+            transition: all 0.25s;
+        }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(6,182,212,0.4); }
+
+        .how-it-works {
+            padding: 2.5rem;
+            text-align: center;
+            margin: 0 0 2.5rem;
+        }
+        .steps-row {
+            display: flex; justify-content: center; gap: 1.5rem;
+            flex-wrap: wrap; margin-top: 1.5rem;
+        }
+        .step-box {
+            flex: 1; min-width: 180px; max-width: 220px;
+            padding: 1.5rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+        }
+        .step-circle {
+            width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 1rem; margin: 0 auto 12px;
+        }
+        .step-circle.s1 { background: rgba(139,92,246,0.2); color: #8b5cf6; }
+        .step-circle.s2 { background: rgba(6,182,212,0.2); color: #06b6d4; }
+        .step-circle.s3 { background: rgba(16,185,129,0.2); color: #10b981; }
+        .step-box h5 { font-weight: 800; margin-bottom: 8px; }
+        .step-box p { color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+
+        .trust-row {
+            display: flex; justify-content: center; gap: 2rem;
+            flex-wrap: wrap; margin-top: 1.5rem;
+        }
+        .trust-item { text-align: center; }
+        .trust-item .num { font-size: 2rem; font-weight: 900; background: linear-gradient(135deg,#8b5cf6,#ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .trust-item p { color: var(--muted); font-size: 0.85rem; }
+
+        .dl-note {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 1rem 1.5rem; border-radius: 12px;
+            background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2);
+            margin-top: 2rem; font-size: 0.88rem; color: var(--muted); line-height: 1.6;
+        }
+        .dl-note i { color: var(--gold); margin-top: 2px; flex-shrink: 0; }
+
+        .dl-main { max-width: 1200px; margin: 0 auto 3rem; padding: 0 1.5rem; }
+
+        /* Sync header style */
+        .dl-header-pts { display: flex; align-items: center; gap: 8px; }
+        @media(max-width:480px) { .dl-hero h1 { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a class="logo" href="index.html">
+            <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+            <span class="logo-text">EarnPoints.Pro</span>
+        </a>
+
+        <nav class="header-nav" aria-label="Site navigation">
+            <button class="nav-btn" onclick="location.href='index.html'">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </button>
+            <button class="nav-btn" onclick="location.href='index.html'">
+                <i class="fa-solid fa-coins"></i> Earn Points
+            </button>
+            <button class="nav-btn active">
+                <i class="fa-solid fa-cloud-arrow-down"></i> Free Files
+            </button>
+            <button class="nav-btn" onclick="location.href='index.html'">
+                <i class="fa-solid fa-gift"></i> Redeem Store
+            </button>
+        </nav>
+
+        <div class="header-right">
+            <div class="points-chip">
+                <i class="fa-solid fa-coins"></i> <span id="pts-display">0</span> pts
+            </div>
+            <div class="user-chip">
+                <i class="fa-solid fa-mobile-screen-button"></i> <span id="user-display">---</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dl-main">
+
+        <!-- Hero Section -->
+        <div class="dl-hero glass">
+            <h1>🔓 <span>Free Premium</span> Downloads</h1>
+            <p>
+                Unlock exclusive high-value digital files completely <strong style="color:#fff;">for free</strong>!
+                Simply complete one quick task (install an app or fill a short survey) and your file will download instantly.
+                No credit card. No payment. 100% Free.
+            </p>
+            <div class="badges">
+                <span class="dl-badge free"><i class="fa-solid fa-check"></i> 100% Free</span>
+                <span class="dl-badge fast"><i class="fa-solid fa-bolt"></i> Instant Unlock</span>
+                <span class="dl-badge secure"><i class="fa-solid fa-shield-halved"></i> Safe & Verified</span>
+            </div>
+        </div>
+
+        <!-- Trust Stats -->
+        <div class="glass" style="padding:1.5rem 2rem; margin-bottom:2rem; text-align:center;">
+            <div class="trust-row">
+                <div class="trust-item">
+                    <div class="num">5,000+</div>
+                    <p>Files Downloaded</p>
+                </div>
+                <div class="trust-item">
+                    <div class="num">10k+</div>
+                    <p>Happy Users</p>
+                </div>
+                <div class="trust-item">
+                    <div class="num">&lt;1 min</div>
+                    <p>To Unlock</p>
+                </div>
+                <div class="trust-item">
+                    <div class="num">0₹</div>
+                    <p>No Payment Needed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Downloads Grid -->
+        <div class="downloads-grid">
+
+            <!-- File 1: AI Script -->
+            <div class="download-card glass">
+                <div class="file-icon-wrap code"><i class="fa-solid fa-file-code"></i></div>
+                <div class="file-meta">
+                    <span class="file-tag type">Python Script</span>
+                    <span class="file-tag size">2.4 MB</span>
+                    <span class="file-tag new">🔥 Popular</span>
+                </div>
+                <h4>AI Auto-Writer Script V2.0</h4>
+                <p>
+                    A powerful Python-based AI tool that automatically generates SEO-optimized blog articles using OpenAI.
+                    Includes fully activated license key, setup guide, and 50+ niche templates. Perfect for bloggers and content marketers.
+                </p>
+                <button class="download-btn trigger-locker" data-file="AI Auto-Writer Script V2.0" id="btn-dl-1">
+                    <i class="fa-solid fa-unlock-keyhole"></i> Unlock & Download FREE
+                </button>
+            </div>
+
+            <!-- File 2: Blogger Theme -->
+            <div class="download-card glass">
+                <div class="file-icon-wrap theme"><i class="fa-solid fa-palette"></i></div>
+                <div class="file-meta">
+                    <span class="file-tag type">XML Theme</span>
+                    <span class="file-tag size">1.2 MB</span>
+                    <span class="file-tag new">⭐ Premium</span>
+                </div>
+                <h4>Pro Blogger SEO Theme 2026</h4>
+                <p>
+                    Ultra-fast, mobile-first responsive Blogger theme built for maximum AdSense revenue and Google SEO rankings.
+                    Includes sticky headers, ad slots, dark mode, and one-click color customization. No coding needed!
+                </p>
+                <button class="download-btn trigger-locker" data-file="Pro Blogger SEO Theme 2026" id="btn-dl-2">
+                    <i class="fa-solid fa-unlock-keyhole"></i> Unlock & Download FREE
+                </button>
+            </div>
+
+            <!-- File 3: Money eBook -->
+            <div class="download-card glass">
+                <div class="file-icon-wrap pdf"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="file-meta">
+                    <span class="file-tag type">PDF eBook</span>
+                    <span class="file-tag size">3.8 MB</span>
+                    <span class="file-tag new">💰 Trending</span>
+                </div>
+                <h4>10 Ways to Make $100/Day Online</h4>
+                <p>
+                    An exclusive 80-page PDF guide revealing 10 proven online income methods — affiliate marketing, freelancing, CPA, dropshipping & more.
+                    Includes real case studies, income screenshots, and step-by-step action plans. Normally priced at $19!
+                </p>
+                <button class="download-btn trigger-locker" data-file="10 Ways to Make $100/Day Online" id="btn-dl-3">
+                    <i class="fa-solid fa-unlock-keyhole"></i> Unlock & Download FREE
+                </button>
+            </div>
+
+            <!-- File 4: Game Config -->
+            <div class="download-card glass">
+                <div class="file-icon-wrap zip"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="file-meta">
+                    <span class="file-tag type">ZIP Config</span>
+                    <span class="file-tag size">560 KB</span>
+                    <span class="file-tag new">🎮 Gaming</span>
+                </div>
+                <h4>Gamer Pro FPS Booster Config</h4>
+                <p>
+                    Highly optimized configuration files for BGMI, Free Fire, and Call of Duty Mobile.
+                    Reduces lag, improves frame rate up to 60 FPS, and eliminates stuttering on any Android device.
+                    Works without root access.
+                </p>
+                <button class="download-btn trigger-locker" data-file="Gamer Pro FPS Booster Config" id="btn-dl-4">
+                    <i class="fa-solid fa-unlock-keyhole"></i> Unlock & Download FREE
+                </button>
+            </div>
+
+            <!-- File 5: Social Media Pack -->
+            <div class="download-card glass">
+                <div class="file-icon-wrap theme"><i class="fa-solid fa-photo-film"></i></div>
+                <div class="file-meta">
+                    <span class="file-tag type">Canva Pack</span>
+                    <span class="file-tag size">8.5 MB</span>
+                    <span class="file-tag new">📸 Creative</span>
+                </div>
+                <h4>500+ Social Media Templates Pack</h4>
+                <p>
+                    Professional, editable Canva templates for Instagram, YouTube, Facebook & WhatsApp.
+                    Includes 500+ ready-to-use designs for posts, reels covers, thumbnails, and stories.
+                    One-click edit, no design skill needed!
+                </p>
+                <button class="download-btn trigger-locker" data-file="500+ Social Media Templates Pack" id="btn-dl-5">
+                    <i class="fa-solid fa-unlock-keyhole"></i> Unlock & Download FREE
+                </button>
+            </div>
+
+            <!-- File 6: Earning Guide -->
+            <div class="download-card glass">
+                <div class="file-icon-wrap pdf"><i class="fa-solid fa-book-open"></i></div>
+                <div class="file-meta">
+                    <span class="file-tag type">PDF Guide</span>
+                    <span class="file-tag size">2.1 MB</span>
+                    <span class="file-tag new">🚀 New</span>
+                </div>
+                <h4>Ultimate CPA Marketing Blueprint</h4>
+                <p>
+                    A comprehensive beginner-to-advanced guide for CPA marketing — the same method that powers our rewards platform.
+                    Learn how to earn $50–$500/day using free traffic strategies, social media, and micro-sites.
+                    Includes real earnings proof!
+                </p>
+                <button class="download-btn trigger-locker" data-file="Ultimate CPA Marketing Blueprint" id="btn-dl-6">
+                    <i class="fa-solid fa-unlock-keyhole"></i> Unlock & Download FREE
+                </button>
+            </div>
+
+        </div>
+
+        <!-- How It Works -->
+        <div class="how-it-works glass">
+            <h2 style="font-size:1.5rem; font-weight:900; margin-bottom:4px;">
+                <i class="fa-solid fa-circle-question" style="color:var(--cyan);"></i> How does File Unlocking work?
+            </h2>
+            <p style="color:var(--muted); font-size:0.9rem;">Unlock any premium file in under 60 seconds — completely free!</p>
+            <div class="steps-row">
+                <div class="step-box">
+                    <div class="step-circle s1">1</div>
+                    <h5>Click "Unlock & Download"</h5>
+                    <p>Choose any file above and click the blue unlock button to begin.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-circle s2">2</div>
+                    <h5>Complete One Quick Task</h5>
+                    <p>A CPAlead popup will appear. Pick a simple task — install an app, take a survey, or sign up for a free service.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-circle s3">3</div>
+                    <h5>Instant Download!</h5>
+                    <p>Once the task is verified, your file will download automatically. No payment, no tricks!</p>
+                </div>
+            </div>
+
+            <div class="dl-note" style="max-width:700px; margin:1.5rem auto 0;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>
+                    <strong style="color:var(--text);">Tip:</strong> If the popup is blocked by your browser's ad blocker, 
+                    please disable it temporarily for this site. 
+                    All tasks are provided by <strong style="color:var(--text);">CPAlead</strong>, 
+                    a trusted global publisher network. Your data is never misused.
+                </span>
+            </div>
+        </div>
+
+        <!-- Back to Earn Banner -->
+        <div class="glass" style="padding:1.5rem 2rem; margin-bottom:0; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+            <div>
+                <h3 style="font-weight:800; margin-bottom:4px;">Want to earn real cash too?</h3>
+                <p style="color:var(--muted); font-size:0.88rem;">Complete offers on our Offerwall and earn points → Redeem for PayPal Cash ($10, $25, $50) or Google Play Gift Cards!</p>
+            </div>
+            <a href="index.html" class="btn-primary" style="text-decoration:none; white-space:nowrap;">
+                <i class="fa-solid fa-coins"></i> Start Earning Points
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p style="margin-bottom:6px;">&copy; 2026 <strong>EarnPoints.Pro</strong> — All Rights Reserved</p>
+        <p style="margin-bottom:6px; font-size:0.8rem;">File unlocking powered by <a href="https://www.cpalead.com" target="_blank" rel="nofollow">CPAlead Content Locker Network</a></p>
+        <p style="font-size:0.78rem; color:var(--muted);">All files are free to download. Tasks must be completed genuinely. VPN and fake completions are not allowed.</p>
+    </footer>
+
+    <!-- CPAlead Locker JS -->
+    <script src="https://cdnflair.com/js/interact-form.js"></script>
+
+    <!-- Cloudinary image optimization (load before inline script) -->
+    <script src="js/cloudinary.js"></script>
+
+    <script>
+        // Show user's current points & name from new storage keys
+        const EP_CURRENT = 'ep_current';
+        const EP_USERS   = 'ep_users';
+
+        function loadHeaderStats() {
+            const mobile = localStorage.getItem(EP_CURRENT);
+            if (!mobile || mobile === 'ADMIN') {
+                // Not logged in — redirect
+                if (!mobile) {
+                    alert('Please login first to access premium files.');
+                    window.location.href = 'index.html';
+                    return;
+                }
+            }
+            if (mobile === 'ADMIN') {
+                document.getElementById('user-display').textContent = 'ADMIN';
+                document.getElementById('pts-display').textContent  = '∞';
+                return;
+            }
+            const users = JSON.parse(localStorage.getItem(EP_USERS) || '[]');
+            const user  = users.find(u => u.mobile === mobile);
+            if (user) {
+                document.getElementById('user-display').textContent = user.mobile;
+                document.getElementById('pts-display').textContent  = user.points;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHeaderStats();
+
+            // Set up CPAlead locker triggers on every download button
+            document.querySelectorAll('.trigger-locker').forEach(btn => {
+                btn.setAttribute('data-interact-trigger', '64711');
+                btn.setAttribute('data-interact-slug', 'HjxQG1');
+
+                btn.addEventListener('click', () => {
+                    const fileName = btn.getAttribute('data-file');
+                    console.log('Unlocking:', fileName);
+                    // Fallback if popup blocked
+                    setTimeout(() => {
+                        if (document.visibilityState === 'visible') {
+                            if (confirm(`Popup not opening? Click OK to open the unlock page for:\n"${fileName}"`)) {
+                                window.open('https://fasturl.cc/locker/64711', '_blank');
+                            }
+                        }
+                    }, 5000);
+                });
+            });
+
+            // Apply Cloudinary optimized images to download card icons
+            if (typeof REWARD_IMAGES !== 'undefined') {
+                const iconMap = {
+                    'btn-dl-1': REWARD_IMAGES.ai_script,
+                    'btn-dl-2': REWARD_IMAGES.blogger_theme,
+                    'btn-dl-3': REWARD_IMAGES.ebook,
+                    'btn-dl-4': REWARD_IMAGES.game,
+                    'btn-dl-5': REWARD_IMAGES.social_pack,
+                    'btn-dl-6': REWARD_IMAGES.cpa_guide
+                };
+                Object.entries(iconMap).forEach(([btnId, imgUrl]) => {
+                    const btn  = document.getElementById(btnId);
+                    const card = btn ? btn.closest('.download-card') : null;
+                    const wrap = card ? card.querySelector('.file-icon-wrap') : null;
+                    if (wrap && imgUrl) {
+                        const img = document.createElement('img');
+                        img.src    = imgUrl;
+                        img.alt    = '';
+                        img.style.cssText = 'width:48px;height:48px;object-fit:contain;border-radius:8px;';
+                        img.onerror = () => img.remove(); // fallback to icon if Cloudinary fails
+                        wrap.querySelector('i').style.display = 'none';
+                        wrap.appendChild(img);
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
