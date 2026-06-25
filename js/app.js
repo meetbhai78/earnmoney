@@ -76,6 +76,32 @@ parseReferralCode();
 // ===================== AUTH SYSTEM =====================
 let isSignup = false;
 
+// Called by landing page buttons to pre-set login vs signup mode
+function updateAuthModal() {
+    const wantSignup = !!window.__landingOpenSignup;
+    if (isSignup !== wantSignup) {
+        isSignup = wantSignup;
+        document.getElementById('email-field').style.display   = isSignup ? 'block' : 'none';
+        document.getElementById('name-field').style.display    = isSignup ? 'block' : 'none';
+        document.getElementById('referral-field').style.display = isSignup ? 'block' : 'none';
+        const emailEl = document.getElementById('auth-email');
+        const nameEl  = document.getElementById('auth-name');
+        if (emailEl) emailEl.required = isSignup;
+        if (nameEl)  nameEl.required  = false;
+        document.getElementById('auth-btn-text').textContent   = isSignup ? 'Create Account' : 'Sign In';
+        document.getElementById('auth-switch-msg').textContent  = isSignup ? 'Already have an account?' : "Don't have an account?";
+        document.getElementById('auth-toggle').textContent     = isSignup ? ' Sign In' : ' Create Account';
+        document.getElementById('auth-subtitle').textContent   = isSignup ? 'Join now and start earning rewards!' : 'Sign in to start earning rewards!';
+
+        if (isSignup) {
+            const refInput  = document.getElementById('auth-referral');
+            const storedRef = localStorage.getItem('ep_ref_code');
+            if (storedRef && refInput) { refInput.value = storedRef; refInput.readOnly = true; refInput.style.opacity = '0.7'; }
+            else if (refInput)         { refInput.value = ''; refInput.readOnly = false; refInput.style.opacity = '1'; }
+        }
+    }
+}
+
 function initAuthPage() {
     const form       = document.getElementById('auth-form');
     const toggleBtn  = document.getElementById('auth-toggle');
@@ -321,6 +347,9 @@ async function loadApp() {
 
     document.getElementById('auth-page').style.display = 'none';
     document.getElementById('app-wrapper').style.display = 'block';
+    // Close auth modal if open (from landing page)
+    const modalOverlay = document.getElementById('auth-modal-overlay');
+    if (modalOverlay) modalOverlay.style.display = 'none';
 
     const isAdmin = current === 'ADMIN';
     const user = isAdmin ? { mobile: ADMIN_MOBILE, name: 'Admin', points: 0, streak: 0, last_claimed: 0 } : await dbGetActiveUser();
