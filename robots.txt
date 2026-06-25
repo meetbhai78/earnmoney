@@ -3,7 +3,7 @@ Allow: /
 Disallow: /js/
 Disallow: /css/
 
-Sitemap: https://earnpoints.pro/sitemap.xml
+Sitemap: https://earnmoney-lt8y.onrender.com/sitemap.xml
 
 # EarnPoints Pro - Free Online Rewards Platform
 # Earn points by completing tasks and redeem for PayPal, Google Play, and more!
